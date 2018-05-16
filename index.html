@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/album.css"> <!-- Album resource -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script type='text/javascript' src='./bower_components/knockout/dist/knockout.js'></script>
+  	
+	<title>GoCommunity | CrowdFunding Website</title>
+</head>
+<body>
+	
+	<header class="cd-header">
+		<h1>GoCommunity<i class="fas fa-hand-holding-usd"></i></h1>
+	</header>
+
+	<main class="cd-main-content">
+		
+		<section class="cd-gallery">
+			<div class="album bg-ligth">
+				<div class="container">
+					<div class="row">
+						<!-- ko foreach : projects -->
+						<div class="col-md-4">
+								<div class="card mb-4 box-shadow">
+								  <img data-bind="alt : name , src : imgSrc" class="card-img-top" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+								  <div class="card-body">
+									<p class="card-text" data-bind="text : description">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+									<div class="d-flex justify-content-between align-items-center">
+									  <div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									  </div>
+									</div>
+								  </div>
+								</div>
+							  </div>
+						<!-- /ko -->
+					</div>
+				</div>
+			</div>
+			<div class="cd-fail-message">No results found</div>
+		</section> <!-- cd-gallery -->
+
+		<div class="cd-filter">
+			<form>
+				<div class="cd-filter-block">
+					<h4>Search</h4>
+					
+					<div class="cd-filter-content">
+						<input id="toSearch" data-bind="textInput : filterContent()" type="search" placeholder="Search">
+					</div> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+
+				<div class="cd-filter-block">
+					<h4>Check boxes</h4>
+
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
+			    			<label class="checkbox-label" for="checkbox1">Option 1</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
+							<label class="checkbox-label" for="checkbox2">Option 2</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
+							<label class="checkbox-label" for="checkbox3">Option 3</label>
+						</li>
+					</ul> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+
+				<div class="cd-filter-block">
+					<h4>Select</h4>
+					
+					<div class="cd-filter-content">
+						<div class="cd-select cd-filters">
+							<select class="filter" name="selectThis" id="selectThis">
+								<option value="">Choose an option</option>
+								<option value=".option1">Option 1</option>
+								<option value=".option2">Option 2</option>
+								<option value=".option3">Option 3</option>
+								<option value=".option4">Option 4</option>
+							</select>
+						</div> <!-- cd-select -->
+					</div> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+
+				<div class="cd-filter-block">
+					<h4>Radio buttons</h4>
+
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
+							<label class="radio-label" for="radio1">All</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".radio2" type="radio" name="radioButton" id="radio2">
+							<label class="radio-label" for="radio2">Choice 2</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".radio3" type="radio" name="radioButton" id="radio3">
+							<label class="radio-label" for="radio3">Choice 3</label>
+						</li>
+					</ul> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+			</form>
+
+			<a href="#0" class="cd-close">Close</a>
+		</div> <!-- cd-filter -->
+
+		<a href="#0" class="cd-filter-trigger">Filters</a>
+	</main> <!-- cd-main-content -->
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<script src="js/main.js"></script> <!-- Resource jQuery -->
+<script src="data.js"></script> <!-- Data Source -->
+</body>
+</html>
