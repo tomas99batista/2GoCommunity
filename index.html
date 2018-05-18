@@ -36,7 +36,7 @@
 							<div class="card mb-4 box-shadow">
 								<img data-bind="alt : name , src : imgSrc" class="card-img-top" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
 								<div class="card-body">
-								<p class="card-text" data-bind="text : description">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text" data-bind="text : description"></p>
 								<div class="d-flex justify-content-between align-items-center">
 									<div class="btn-group">
 									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -81,10 +81,10 @@
 					
 					<div class="cd-filter-content">
 						<div class="cd-select cd-filters">
-							<select class="filter" name="selectThis" id="selectThis">
-								<option value="">Choose an option for funds</option>
+							<select class="filter" name="selectThis" id="selectThis" onchange="filterContentbyFunds()">
+								<option value="0">Choose an option for funds</option>
 								<!-- ko foreach : funds -->
-								<option data-bind="attr : { value : value }, text : fund"></option>
+								<option data-bind="attr : { value : value , id : value }, text : fund"></option>
 								<!-- /ko -->
 							</select>
 						</div> <!-- cd-select -->
@@ -94,21 +94,17 @@
 				<div class="cd-filter-block">
 					<h4>Radio buttons</h4>
 
-					<ul class="cd-filter-content cd-filters list">
+					<ul class="cd-filter-content cd-filters list" onchange="filterContentbyLocation()">
 						<li>
-							<input class="filter" data-filter="" type="radio" name="radioButton" id="radio1" checked>
-							<label class="radio-label" for="radio1">All</label>
+							<input class="filter" name="locationFilter" type="radio" id="radioAll" checked>
+							<label class="radio-label" for="radioAll">All</label>
 						</li>
-
+						<!-- ko foreach : locations -->
 						<li>
-							<input class="filter" data-filter=".radio2" type="radio" name="radioButton" id="radio2">
-							<label class="radio-label" for="radio2">Choice 2</label>
+							<input class="filter" name="locationFilter" type="radio" data-bind="attr : { id : 'radio' + $data } ">
+							<label class="radio-label" data-bind="text : $data, attr : { for : 'radio' + $data } "></label>
 						</li>
-
-						<li>
-							<input class="filter" data-filter=".radio3" type="radio" name="radioButton" id="radio3">
-							<label class="radio-label" for="radio3">Choice 3</label>
-						</li>
+						<!-- /ko -->
 					</ul> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 			</form>
