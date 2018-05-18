@@ -1,40 +1,75 @@
 
 
 var projectsData = [ 
-    { name : "Project1", description : "Some description 1...", comments : "Some comments 1..." , category : "Category 1" , imgSrc : "" } , 
-    { name : "Project2", description : "Some description 2...", comments : "Some comments 2..." , category : "Category 2" , imgSrc : "" } ,  
-    { name : "Project3", description : "Some description 3...", comments : "Some comments 3..." , category : "Category 2" , imgSrc : "" } , 
-    { name : "Project4", description : "Some description 4...", comments : "Some comments 4..." , category : "Category 3" , imgSrc : "" } , 
-    { name : "Project5", description : "Some description 5...", comments : "Some comments 5..." , category : "Category 1" , imgSrc : "" } ,  ];
+    { name : "Project1", description : "Some description 1...", comments : "Some comments 1..." , category : ["Category_1"] , imgSrc : "" , location : "Europe"  , raisedFunds : "<1 000"            } , 
+    { name : "Project2", description : "Some description 2...", comments : "Some comments 2..." , category : ["Category_2"] , imgSrc : "" , location : "Africa"  , raisedFunds : "1 000-10 000"      } ,  
+    { name : "Project3", description : "Some description 3...", comments : "Some comments 3..." , category : ["Category_2"] , imgSrc : "" , location : "America" , raisedFunds : "10 000-100 000"    } , 
+    { name : "Project4", description : "Some description 4...", comments : "Some comments 4..." , category : ["Category_3"] , imgSrc : "" , location : "Asia"    , raisedFunds : "100 000-1 000 000" } , 
+    { name : "Project5", description : "Some description 5...", comments : "Some comments 5..." , category : ["Category_1"] , imgSrc : "" , location : "Africa"  , raisedFunds : ">1 000 000"        } ,  ];
 
 function viewModel() {
 
     var self = this;
     
-    this.categories = ko.observableArray([ "Category 1", "Category 2", "Category 3" ]);
+    self.categories = ko.observableArray([ "Category 1", "Category 2", "Category 3" ]);
+    self.locations = ko.observableArray([ "Africa", "America", "Asia", "Europe "]);
+    self.funds = ko.observableArray([ "<1 000", "1 000-10 000", "10 000-100 000", "100 000-1 000 000", ">1 000 000" ]);
 
-    this.projects = ko.observableArray(projectsData);
+    self.projects = ko.observableArray([]);
+    populateArray();
 
-    filterContent = function() {
-        console.log("I'm in function filterContent");
-        var filterText = document.getElementById("toSearch").value;
-        console.log(self.projects());
+    self.failMessage = document.getElementById("failMessage");
+    self.failMessage.style.visibility = "hidden";
+
+    filterContentbyName = function() {
+        console.log("In function filterContentbyName");
+        var filterText = document.getElementById("toSearchName").value;
+        self.projects.removeAll() //clean array
+        //console.log("B. Search: " + self.projects().length);
+        
         if(filterText!=""){
-            //self.projects.removeAll();
-            //console.log("Am here");
-            repopulateArray();
-            for(var i=0; i<self.projects().length; i++) {
-                //console.log("to Search = " + filterText + " ; arrayData = " + self.projects()[i].category);
-                if(filterText != self.projects()[i].category){
-                    self.projects.remove(self.projects()[i]);
+            for(var i=0; i<projectsData.length; i++) {
+                //console.log("to Search = " + filterText + " ; arrayData = " + self.projects()[i].name);
+                if(filterText.toUpperCase() == projectsData[i].name.toUpperCase()){
+                    self.projects.push(projectsData[i]);
+                }
+            }
+        }
+        else{
+            //console.log("filterText is null");
+            populateArray();
+        }
+
+        //console.log("A. Search: " + self.projects().length);
+
+        //return filterText;
+
+        if(self.projects().length == 0) {
+            //console.log("Array is empty");
+            self.failMessage.style.visibility = "visible";
+        }
+    }
+
+    filterContentbyCategory = function() {
+        console.log("In function filterContentbyCategory");
+        self.projects.removeAll(); //clean array
+        for(var i=0; i<self.categories().length; i++){
+            console.log(self.categories()[i]);
+            if(document.getElementById(self.categories()[i]).checked == true){
+                
+                for(var j=0; j<projectsData.length; j++){
+                    if(projectsData[j].category.includes(self.categories()[i])){
+                        self.projects.push(projectsData[j]);
+                    }
                 }
             }
         }
     }
 
-    function repopulateArray() {
-        self.projects.removeAll();
-        self.projects(projectsData);
+    function populateArray() {
+        for(var i=0; i<projectsData.length; i++){
+            self.projects.push(projectsData[i]);
+        }
     }
 
 }

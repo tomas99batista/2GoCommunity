@@ -17,6 +17,7 @@
 	<script type='text/javascript' src='./bower_components/knockout/dist/knockout.js'></script>
   	
 	<title>GoCommunity | CrowdFunding Website</title>
+
 </head>
 <body>
 	
@@ -31,25 +32,25 @@
 				<div class="container">
 					<div class="row">
 						<!-- ko foreach : projects -->
-						<div class="col-md-4">
-								<div class="card mb-4 box-shadow">
-								  <img data-bind="alt : name , src : imgSrc" class="card-img-top" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
-								  <div class="card-body">
-									<p class="card-text" data-bind="text : description">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-									<div class="d-flex justify-content-between align-items-center">
-									  <div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									  </div>
+						<div class="mix col-md-4">
+							<div class="card mb-4 box-shadow">
+								<img data-bind="alt : name , src : imgSrc" class="card-img-top" style="height: 225px; width: 100%; display: block;" data-holder-rendered="true">
+								<div class="card-body">
+								<p class="card-text" data-bind="text : description">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+									<button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+									<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
 									</div>
-								  </div>
 								</div>
-							  </div>
+								</div>
+							</div>
+						</div>
 						<!-- /ko -->
 					</div>
 				</div>
 			</div>
-			<div class="cd-fail-message">No results found</div>
+			<div id="failMessage">No results found</div>
 		</section> <!-- cd-gallery -->
 
 		<div class="cd-filter">
@@ -58,7 +59,7 @@
 					<h4>Search</h4>
 					
 					<div class="cd-filter-content">
-						<input id="toSearch" data-bind="textInput : filterContent()" type="search" placeholder="Search">
+						<input id="toSearchName" data-bind="textInput : filterContentbyName()" type="search" placeholder="Try color-1...">
 					</div> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
@@ -66,20 +67,12 @@
 					<h4>Check boxes</h4>
 
 					<ul class="cd-filter-content cd-filters list">
+						<!-- ko foreach : categories -->
 						<li>
-							<input class="filter" data-filter=".check1" type="checkbox" id="checkbox1">
-			    			<label class="checkbox-label" for="checkbox1">Option 1</label>
+							<input class="filter" type="checkbox" data-bind="attr : { id : $data }, click : filterContentbyCategory()">
+			    			<label class="checkbox-label" data-bind="attr : { for : $data }, text : $data"></label>
 						</li>
-
-						<li>
-							<input class="filter" data-filter=".check2" type="checkbox" id="checkbox2">
-							<label class="checkbox-label" for="checkbox2">Option 2</label>
-						</li>
-
-						<li>
-							<input class="filter" data-filter=".check3" type="checkbox" id="checkbox3">
-							<label class="checkbox-label" for="checkbox3">Option 3</label>
-						</li>
+						<!-- /ko -->
 					</ul> <!-- cd-filter-content -->
 				</div> <!-- cd-filter-block -->
 
