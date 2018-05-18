@@ -11,9 +11,15 @@ function viewModel() {
 
     var self = this;
     
-    self.categories = ko.observableArray([ "Category 1", "Category 2", "Category 3" ]);
+    self.categories = ko.observableArray([ "Category_1", "Category_2", "Category_3" ]);
     self.locations = ko.observableArray([ "Africa", "America", "Asia", "Europe "]);
-    self.funds = ko.observableArray([ "<1 000", "1 000-10 000", "10 000-100 000", "100 000-1 000 000", ">1 000 000" ]);
+    self.funds = ko.observableArray([ 
+        { fund : "<1 000" , value:  0 }, 
+        { fund : "1 000-10 000" , value : 1 }, 
+        { fund : "10 000-100 000" , value : 2 }, 
+        { fund : "100 000-1 000 000", value : 3 }, 
+        { fund : ">1 000 000", value : 4 } 
+    ]);
 
     self.projects = ko.observableArray([]);
     populateArray();
@@ -53,10 +59,11 @@ function viewModel() {
     filterContentbyCategory = function() {
         console.log("In function filterContentbyCategory");
         self.projects.removeAll(); //clean array
+        var noneIsChecked = 1;
         for(var i=0; i<self.categories().length; i++){
             console.log(self.categories()[i]);
             if(document.getElementById(self.categories()[i]).checked == true){
-                
+                noneIsChecked = 0;
                 for(var j=0; j<projectsData.length; j++){
                     if(projectsData[j].category.includes(self.categories()[i])){
                         self.projects.push(projectsData[j]);
@@ -64,6 +71,7 @@ function viewModel() {
                 }
             }
         }
+        if(noneIsChecked) populateArray();
     }
 
     function populateArray() {
