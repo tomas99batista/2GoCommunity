@@ -20,9 +20,55 @@
 
 </head>
 <body>
+<div style=" background-color: #331d35;">
+	<!-- Button to open the modal login form -->
+<button onclick="document.getElementById('id01').style.display='block'">Login</button>
+</div>
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" 
+class="close" title="Close Modal">&times;</span>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+  <!-- Modal Content -->
+  <form class="modal-content animate" action="/action_page.php">
+    
+    <div class="container">
+     <p> <center><label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+</p></center><br>
+<center>
+      <p> <label style="padding-top: 5px;" for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+</p></center><br>
+     <center> <p><button type="submit">Login       </button>         
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label></p> </center>
+    </div>
+  </form>
+</div>
+
+
 	
 	<header class="cd-header">
+
 		<h1>GoCommunity</h1>
+		
+	</header>
+	<header class="cd-header2">
+
+	<h3>Support your favourite social project and keep tracking the evolution</h3>
+		
 	</header>
 
 	<main class="cd-main-content">
