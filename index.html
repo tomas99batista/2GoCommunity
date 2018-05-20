@@ -20,6 +20,25 @@
 
 </head>
 <body>
+<div class="container">
+<nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="#">HERE1</a></li>
+  </ul>
+  <ul class="nav navbar-nav">
+    <li><a href="#">HERE1</a></li>
+  </ul>
+  <ul class="nav navbar-nav">
+    <li><a href="#">HERE1</a></li>
+  </ul>
+  <ul class="nav navbar-nav">
+    <li><a href="#">HERE1</a></li>
+  </ul>
+</nav>
+</div>
+
+
+
 <div style=" background-color: #331d35;">
 	<!-- Button to open the modal login form -->
 <button onclick="document.getElementById('id01').style.display='block'">Login</button>
@@ -40,26 +59,34 @@ window.onclick = function(event) {
 }
 </script>
   <!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    
-    <div class="container">
-     <p> <center><label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-</p></center><br>
-<center>
-      <p> <label style="padding-top: 5px;" for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-</p></center><br>
-     <center> <p><button type="submit">Login       </button>         
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label></p> </center>
+  <form class="form-horizontal modal-content animate" action="/action_page.php">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-10">
+      <input type="email" class="form-control" style="margin-top: 10px;" id="email" placeholder="Enter email">
     </div>
-  </form>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="pwd">Password:</label>
+    <div class="col-sm-10"> 
+      <input type="password" style="margin-top: 10px;" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <div class="checkbox">
+        <label><input type="checkbox"> Remember me</label>
+      </div>
+    </div>
+  </div>
+  <div class="form-group"> 
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default btn-lg">Submit</button>
+    </div>
+  </div>
+</form>
 </div>
 
-
-	
 	<header class="cd-header">
 
 		<h1>GoCommunity</h1>
