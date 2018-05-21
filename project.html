@@ -19,119 +19,123 @@
 	<title>GoCommunity | CrowdFunding Website</title>
 
 </head>
+
+
 <body>
 
-	<div class="container">
-<nav class="navbar navbar-inverse">
-  <ul class="nav navbar-nav">
-    <li><a href="#">HERE1</a></li>
-  </ul>
-  <ul class="nav navbar-nav">
-    <li><a href="#">HERE1</a></li>
-  </ul>
-  <ul class="nav navbar-nav">
-    <li><a href="#">HERE1</a></li>
-  </ul>
-  <ul class="nav navbar-nav">
-    <li><a href="#">HERE1</a></li>
-  </ul>
-</nav>
-</div>
-
-
-<div style=" background-color: #331d35;">
-	<!-- Button to open the modal login form -->
-<button onclick="document.getElementById('id01').style.display='block'">Login</button>
-</div>
-<!-- The Modal -->
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" 
-class="close" title="Close Modal">&times;</span>
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-</script>
-  <!-- Modal Content -->
-  <form class="form-horizontal modal-content animate" action="/action_page.php">
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="email">Email:</label>
-    <div class="col-sm-10">
-      <input type="email" class="form-control" style="margin-top: 10px;" id="email" placeholder="Enter email">
-    </div>
+  <div class="container">
+    <nav class="navbar navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home Page</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="project.html">Projects</a></li>
+      </ul>
+      <ul class="vav navbar-nav">
+        <li><div style=" background-color: #331d35;">
+          <!-- Button to open the modal login form -->
+        <button onclick="document.getElementById('id01').style.display='block'">Login</button></li>
+      </ul>
+    </nav>
   </div>
-  <div class="form-group">
-    <label class="control-label col-sm-2" for="pwd">Password:</label>
-    <div class="col-sm-10"> 
-      <input type="password" style="margin-top: 10px;" class="form-control" id="pwd" placeholder="Enter password">
-    </div>
-  </div>
-  <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
-      <div class="checkbox">
-        <label><input type="checkbox"> Remember me</label>
+  
+  <!-- The Modal -->
+  <div id="id01" class="modal">
+    <span onclick="document.getElementById('id01').style.display='none'" 
+          class="close" title="Close Modal">
+          &times;
+    </span>
+  
+  <script>
+  // Get the modal
+  var modal = document.getElementById('id01');
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  </script>
+
+    <!-- Modal Content -->
+    <form class="form-horizontal modal-content animate" action="index.html">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" style="margin-top: 10px;" id="email" placeholder="Enter email">
+        </div>
       </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Password:</label>
+        <div class="col-sm-10"> 
+          <input type="password" style="margin-top: 10px;" class="form-control" id="pwd" placeholder="Enter password">
+        </div>
+      </div>
+      <div class="form-group"> 
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default btn-lg">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <header class="cd-header">
+    <h1>GoCommunity</h1>
+  </header>
+  
+  <!-- <header class="cd-header2">
+    <h3>Support your favourite social project and keep tracking the evolution</h3>
+  </header> -->
+
+  <main class="cd-main-content">
+    <div data-bind="with : project" class="container" style="padding-top: 15px;margin-top: 15px; padding-bottom: 15px;  background-color: white;">
+      <form>
+        <div class="form-group">
+          <label for="projectName">Project Name</label>
+          <input data-bind="attr : { value : name }" type="text" class="form-control" style="margin-top: 10px; " id="projectName" placeholder="Insert your project name...">
+        </div>
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea data-bind="html : description" class="form-control" style="margin-top: 10px; "id="description" rows="5" placeholder="Insert a description of your project here..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input data-bind="attr : { value : category }" type="email" class="form-control" style="margin-top: 10px; " id="category" placeholder="Insert your project category here...">
+        </div>
+        <div class="form-group">
+          <label for="images">Images</label>
+          <input type="file" style="margin-top: 10px; " class="form-control-file" id="images">
+          <img class="form-control" data-bind="attr : { src : imgSrc }">
+        </div>
+        <div class="form-group">
+          <label for="latestUpdates">Latest Updates</label>
+          <textarea class="form-control" style="margin-top: 10px; "id="latestUpdates" rows="3" placeholder="Insert a description of your project here..."></textarea>
+        </div>
+        <div class="form-group">
+          <label for="comments">Comments</label>
+          <textarea data-bind="html : comments" class="form-control" style="margin-top: 10px; "id="comments" rows="3" placeholder="Insert a description of your project here..."></textarea>
+        </div>
+      <center> <span>
+        <button id="saveButton" type="button" class="btn btn-default btn-lg">Save</button>
+        <button id="cancelButton" type="button" class="btn btn-danger btn-lg">Cancel</button></span></center>
+      </form>
     </div>
-  </div>
-  <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default btn-lg">Submit</button>
-    </div>
-  </div>
-</form>
-</div>
+  </main>
 
-	<header class="cd-header">
+  
 
-		<h1>GoCommunity</h1>
-		
-	</header>
-	<header class="cd-header2">
+  <script src="js/jquery-2.1.1.js"></script>
+  <script src="js/jquery.mixitup.min.js"></script>
+  <script src="js/main.js"></script> <!-- Resource jQuery -->
+  <script src="project.js"></script> <!-- Data Source -->
 
-	<h3>Support your favourite social project and keep tracking the evolution</h3>
-		
-	</header>
-<div class="container" style="padding-top: 15px;margin-top: 15px; padding-bottom: 15px;  background-color: white;">
-<form>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Project Name</label>
-    <input type="email" class="form-control" style="margin-top: 10px; " id="exampleFormControlInput1" placeholder="Insert your project name...">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Description</label>
-    <textarea class="form-control" style="margin-top: 10px; "id="exampleFormControlTextarea1" rows="5" placeholder="Insert a description of your project here..."></textarea>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlInput1">Category</label>
-    <input type="email" class="form-control" style="margin-top: 10px; " id="exampleFormControlInput1" placeholder="Insert your project category here...">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlFile1">Images</label>
-    <input type="file" style="margin-top: 10px; " class="form-control-file" id="exampleFormControlFile1">
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Latest Updates</label>
-    <textarea class="form-control" style="margin-top: 10px; "id="exampleFormControlTextarea1" rows="3" placeholder="Insert a description of your project here..."></textarea>
-  </div>
-  <div class="form-group">
-    <label for="exampleFormControlTextarea1">Comments</label>
-    <textarea class="form-control" style="margin-top: 10px; "id="exampleFormControlTextarea1" rows=3" placeholder="Insert a description of your project here..."></textarea>
-  </div>
- <center> <span>
-	<button type="button" class="btn btn-default btn-lg">Save</button>
-  	<button type="button" class="btn btn-danger btn-lg">Cancel</button></span></center>
-</form>
-</div>
-
-<script src="js/jquery-2.1.1.js"></script>
-<script src="js/jquery.mixitup.min.js"></script>
-<script src="js/main.js"></script> <!-- Resource jQuery -->
-<script src="data.js"></script> <!-- Data Source -->
 </body>
 </html>
