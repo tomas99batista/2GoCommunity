@@ -41,7 +41,7 @@ function viewModel() {
     var self = this;
 
     self.userId = ko.observable();
-    self.userId(document.URL.split("#")[1]);
+    self.userId(document.URL.split("?")[1]);
 
     console.log(self.userId());
     
