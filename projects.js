@@ -39,6 +39,11 @@ $.ajax({
 function viewModel() {
 
     var self = this;
+
+    self.userId = ko.observable();
+    self.userId(document.URL.split("#")[1]);
+
+    console.log(self.userId());
     
     self.categories = ko.observableArray([ "Children", "Education" ]);
     self.locations = ko.observableArray([ "Africa", "America", "Asia", "Europe" ]);
