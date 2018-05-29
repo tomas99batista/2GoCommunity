@@ -27,8 +27,8 @@ var projectsData = [
     { name : "Berlin’s neighbourhood management project brings", 
       description : "To counteract the negative outcomes of social segregation and social issues found in certain areas of Berlin after the reunification of the city, the Neighbourhood Management Berlin intervention strategy was launched in 1999 by the city authorities and, for more than a decade, it has proven to be a valuable tool in the development of the ‘Socially Integrative City’ of Berlin.", 
       comments : "Some comments 4..." , 
-      category : ["Children"] , 
-      imgSrc : "http://ec.europa.eu/regional_policy/index.cfm?action=image.display&imageid=2036" , 
+      category : ["Children"] , document.URL.split("#")[1];
+      imgSrc : "http://ec.europadocument.URL.split("#")[1];036" , 
       location : "Europe" , 
       raisedFunds : 1 ,
       id : 4 } , 
