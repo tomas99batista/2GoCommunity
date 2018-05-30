@@ -25,10 +25,12 @@ function viewModel() {
 
         for(var i=0; i<loginData.length; i++){
             if(loginData[i].userName == insertedUser && loginData[i].password == insertedPassword){
-                alert("Log in successful");
                 self.userId(loginData[i].userId);
                 console.log(self.userId);
+                $("#loginForm").attr('action', 'projects.html');
+                alert("Log in successful. Form Action: " + $("#loginForm").attr('action'));
                 $("#loginForm").submit();
+                // + '?id=' + self.userId()
             }
         }
         });

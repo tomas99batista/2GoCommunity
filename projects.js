@@ -41,9 +41,17 @@ function viewModel() {
     var self = this;
 
     self.userId = ko.observable();
-    self.userId(document.URL.split("?")[1]);
+    //self.userId(document.URL.split("#")[1]);
 
-    console.log(self.userId());
+    var queryString = decodeURIComponent(window.location.search);
+    var userIdStr = queryString.substring(1);
+
+    self.userId(userIdStr.split("=")[1]);
+
+    /* console.log(queryString);
+    console.log(userIdStr); */
+
+    console.log("userId = " + self.userId());
     
     self.categories = ko.observableArray([ "Children", "Education" ]);
     self.locations = ko.observableArray([ "Africa", "America", "Asia", "Europe" ]);
