@@ -16,76 +16,57 @@
 
 	<script type='text/javascript' src='./bower_components/knockout/dist/knockout.js'></script>
   	
-	<title>GoCommunity | CrowdFunding Website</title>
+  <title>GoCommunity | CrowdFunding Website</title>
+  
+  <style>
+    .user-row {
+        margin-bottom: 14px;
+    }
+    .user-row:last-child {
+        margin-bottom: 0;
+    }
+    .dropdown-user {
+        margin: 13px 0;
+        padding: 5px;
+        height: 100%;
+    }
+    .dropdown-user:hover {
+        cursor: pointer;
+    }
+    .table-user-information > tbody > tr {
+        border-top: 1px solid rgb(221, 221, 221);
+    }
+    .table-user-information > tbody > tr:first-child {
+        border-top: 0;
+    }
+    .table-user-information > tbody > tr > td {
+        border-top: 0;
+    }
+    .toppad {
+      margin-top:20px;
+    }
+  </style>
 
 </head>
 
 
 <body>
 
-  <div class="container">
-    <nav class="navbar navbar-inverse">
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home Page</a></li>
-      </ul>
-      <ul class="nav navbar-nav">
-        <li><a href="project.html">Projects</a></li>
-      </ul>
-      <ul class="vav navbar-nav">
-        <li><div style=" background-color: #331d35;">
-          <!-- Button to open the modal login form -->
-        <button onclick="document.getElementById('id01').style.display='block'">Login</button></li>
-      </ul>
-    </nav>
-  </div>
-  
-  <!-- The Modal -->
-  <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" 
-          class="close" title="Close Modal">
-          &times;
-    </span>
-  
-  <script>
-  // Get the modal
-  var modal = document.getElementById('id01');
-
-  // When the user clicks anywhere outside of the modal, close it
-  window.onclick = function(event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
-  }
-  </script>
-
-    <!-- Modal Content -->
-    <form class="form-horizontal modal-content animate" action="index.html">
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="email">Email:</label>
-        <div class="col-sm-10">
-          <input type="email" class="form-control" style="margin-top: 10px;" id="email" placeholder="Enter email">
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">Password:</label>
-        <div class="col-sm-10"> 
-          <input type="password" style="margin-top: 10px;" class="form-control" id="pwd" placeholder="Enter password">
-        </div>
-      </div>
-      <div class="form-group"> 
-        <div class="col-sm-offset-2 col-sm-10">
-          <div class="checkbox">
-            <label><input type="checkbox"> Remember me</label>
-          </div>
-        </div>
-      </div>
-      <div class="form-group"> 
-        <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default btn-lg">Submit</button>
-        </div>
-      </div>
-    </form>
-  </div>
+  <!-- NAV -->
+  <ul class="nav justify-content-end nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" href="index.html">HomePage</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="projectsG.html">Projects</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="login.html">Login</a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link disabled" href="#">Disabled</a>
+    </li> -->
+  </ul>
   
   <header class="cd-header">
     <h1>GoCommunity</h1>
@@ -97,36 +78,37 @@
 
   <main class="cd-main-content">
     <div data-bind="with : project" class="container" style="padding-top: 15px;margin-top: 15px; padding-bottom: 15px;  background-color: white;">
-      <form>
+      <div>
         <div class="form-group">
           <label for="projectName">Project Name</label>
-          <input data-bind="attr : { value : name }" type="text" class="form-control" style="margin-top: 10px; " id="projectName" placeholder="Insert your project name...">
+          <div data-bind="text : name" type="text" class="form-control" style="margin-top: 10px; " id="projectName">
         </div>
         <div class="form-group">
           <label for="description">Description</label>
-          <textarea data-bind="html : description" class="form-control" style="margin-top: 10px; "id="description" rows="5" placeholder="Insert a description of your project here..."></textarea>
+          <div data-bind="html : description" class="form-control" style="margin-top: 10px; "id="description"></textarea>
         </div>
         <div class="form-group">
           <label for="category">Category</label>
-          <input data-bind="attr : { value : category }" type="email" class="form-control" style="margin-top: 10px; " id="category" placeholder="Insert your project category here...">
+          <div data-bind="text : category" type="email" class="form-control" style="margin-top: 10px; " id="category">
         </div>
         <div class="form-group">
           <label for="images">Images</label>
-          <input type="file" style="margin-top: 10px; " class="form-control-file" id="images">
+          <!-- <div type="file" style="margin-top: 10px; " class="form-control-file" id="images"> -->
           <img class="form-control" data-bind="attr : { src : imgSrc }">
         </div>
         <div class="form-group">
           <label for="latestUpdates">Latest Updates</label>
-          <textarea class="form-control" style="margin-top: 10px; "id="latestUpdates" rows="3" placeholder="Insert a description of your project here..."></textarea>
+          <div class="form-control" style="margin-top: 10px; "id="latestUpdates"></textarea>
         </div>
         <div class="form-group">
           <label for="comments">Comments</label>
-          <textarea data-bind="html : comments" class="form-control" style="margin-top: 10px; "id="comments" rows="3" placeholder="Insert a description of your project here..."></textarea>
+          <div data-bind="html : comments" class="form-control" style="margin-top: 10px; "id="comments"></textarea>
         </div>
-      <center> <span>
-        <button id="saveButton" type="button" class="btn btn-default btn-lg">Save</button>
-        <button id="cancelButton" type="button" class="btn btn-danger btn-lg">Cancel</button></span></center>
-      </form>
+        <!-- <center> <span>
+          <button id="saveButton" type="button" class="btn btn-default btn-lg">Save</button>
+          <button id="cancelButton" type="button" class="btn btn-danger btn-lg">Cancel</button></span>
+        </center> -->
+      </div>
     </div>
   </main>
 
@@ -135,7 +117,9 @@
   <script src="js/jquery-2.1.1.js"></script>
   <script src="js/jquery.mixitup.min.js"></script>
   <script src="js/main.js"></script> <!-- Resource jQuery -->
-  <script src="project.js"></script> <!-- Data Source -->
+  
+  <script type="text/javascript" src="data.js"></script> <!-- Data Source -->
+  <script type="text/javascript" src="project.js"></script> <!-- Data Source -->
 
 </body>
 </html>
