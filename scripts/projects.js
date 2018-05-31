@@ -1,41 +1,4 @@
 
-/* var projectsData = [];
-
-$.ajax({
-    type : 'GET',
-    dataType : 'json',
-    url: 'data.json',
-    async : false,
-    success : function(data) {
-        projectsData = data;
-    } 
-});
-
-console.log(projectsData);
-
-projectsData.push({
-    name : "Project for example",
-    description : "Random description",
-    comments : "Some Comments",
-    category : ["Education"],
-    imgSrc : "",
-    location : "Europe",
-    raisedFunds : "1",
-    id : "6"
-});
-
-console.log(projectsData);
-
-$.ajax({
-    type: "POST",
-    url: 'data.json',
-    data: JSON.stringify(projectsData),
-    success: function(){
-        console.log("Data sent");
-    },
-    dataType: 'json'
-  }); */
-
 
 function viewModel() {
 
