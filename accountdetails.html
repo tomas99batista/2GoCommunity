@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/album.css"> <!-- Album resource -->
+	<script src="js/modernizr.js"></script> <!-- Modernizr -->
+
+	<script type='text/javascript' src='./bower_components/knockout/dist/knockout.js'></script>
+
+	<title>GoCommunity | CrowdFunding Website</title>
+
+
+</head>
+
+
+<body>
+
+	<ul class="nav justify-content-end nav-pills">
+		<li class="nav-item">
+			<a class="nav-link active" href="#">HomePage</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="projectsG.html">Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="login.html">Login</a>
+		</li>
+		<!-- <li class="nav-item">
+			<a class="nav-link disabled" href="#">Disabled</a>
+		</li> -->
+	</ul>
+
+	<header class="cd-header">
+		<h1>GoCommunity</h1>
+	</header>
+
+		<!-- <header class="cd-header2">
+			<h3>Support your favourite social project and keep tracking the evolution</h3>
+		</header> -->
+
+
+		<main class="cd-main-content">
+			<div data-bind="with : project" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
+				<form>
+
+					<div class="form-group row" id="personName" style="margin-bottom: 10px;">					
+						<label for="personNameInput" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Name
+						</label>
+						<div class="col-lg-2">
+							<select class="form-control" id="personName">
+								<option selected>Choose one...</option>
+								<option>Institution</option>
+								<option>Individual Name</option>
+							</select>
+						</div>
+
+						<div class="col-lg-6"> 
+							<input data-bind="attr : { value : name }" type="text" class="form-control" id="personName" placeholder="Insert your name...">
+						</div>
+
+						<div class="col-lg-2">
+							<label for="donated" style="text-align: left; font-weight: bold;">
+								Donated
+							</label>
+							<span id="donated" class="col-lg-2"> 
+								xxx€
+							</span>
+						</div>
+					</div>	
+
+
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="bilingAdress" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Biling Adress
+						</label>
+
+						<div class="col-lg-8">
+							<input data-bind="attr : { value : name }" type="text" class="form-control" id="bilingAdress" placeholder="Insert your biling adress...">
+						</div>
+						<div class="col-lg-2">
+							<label for="received" style="text-align: left; font-weight: bold;">
+								Received
+							</label>
+							<span id="received" class="col-lg-2"> 
+								xxx€
+							</span>
+						</div>
+					</div>	
+
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="country" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Country
+						</label>
+						<div class="col-lg-8">
+							<input data-bind="attr : { value : name }" type="text" class="form-control" id="country" placeholder="Insert your country...">
+						</div>
+						
+					</div>	
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="email" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							E-mail
+						</label>
+						<div class="col-lg-8">
+							<input data-bind="attr : { value : name }" type="email" class="form-control" id="email" placeholder="Insert your email...">
+						</div>
+						
+					</div>	
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="receiveEmail" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Receive e-mail notifications
+						</label>
+						<div class="col-lg-8" id="receiveEmail">
+							<label class="radio-inline" style="margin-right: 10px;"><input type="radio" name="optradio" value="yes">Yes</label>
+							<label class="radio-inline"><input type="radio" name="optradio" value="no">No</label>
+						</div>
+					</div>	
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="area" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Area
+						</label>
+						<div class="col-lg-8" id="area">
+							<select class="form-control" id="personName">
+								<option selected>Choose one...</option>
+								<option>Animal</option>
+								<option>Charity Institution</option>
+								<option>Children</option>
+								<option>Education</option>
+								<option>Other</option>
+							</select>
+						</div>
+					</div>	
+					 	
+
+					<div class="form-group row" style="margin-top: 20px;">					
+						<label for="description" class="col-lg-2" style="text-align: center; font-weight: bold;">
+							Brief description
+						</label>
+						<div class="col-lg-8" id="description">
+							<textarea class="form-control" id="description" rows="3" placeholder="Insert a brief description..."></textarea>
+						</div>
+					</div>	
+
+					
+
+					<center> <span>
+						<button id="saveButton" type="button" class="btn btn-default btn-lg">Save</button>
+						<button id="cancelButton" type="button" class="btn btn-danger btn-lg">Cancel</button></span></center>
+					</form>
+				</div>
+			</main>
+
+
+
+		</main> <!-- cd-main-content -->
+		<script src="js/jquery-2.1.1.js"></script>
+		<script src="js/jquery.mixitup.min.js"></script>
+		<script src="js/main.js"></script> <!-- Resource jQuery -->
+		<script type="text/javascript" src="data.js"></script>
+		<script type="text/javascript" src="index.js"></script> <!-- Data Source -->
+	</body>
+	</html>
