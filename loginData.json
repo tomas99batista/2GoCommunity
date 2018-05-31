@@ -1,14 +1,14 @@
 [
-  { userName : "admin",
-    password : "admin",
-    userId : 0  ,
-    followed : [1, 2, 4, 5] },
-  { userName : "user", 
-    password : "user",
-    userId : 1 ,
-    followed : [1, 2, 4] },
-  { userName : "test", 
-    password : "test",
-    userId : 2 ,
-    followed : [1, 2, 3, 4, 5] }
+  { "userName" : "admin",
+    "password" : "admin",
+    "userId" : 0  ,
+    "followed" : [1, 2, 4, 5] },
+  { "userName" : "user", 
+    "password" : "user",
+    "userId" : 1 ,
+    "followed" : [1, 2, 4] },
+  { "userName" : "test", 
+    "password" : "test",
+    "userId" : 2 ,
+    "followed" : [1, 2, 3, 4, 5] }
 ]
