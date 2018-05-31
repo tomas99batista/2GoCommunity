@@ -1,47 +1,33 @@
 
 var projectsData = [];
 
-$.ajax({
-    dataType: "json",
-    async : false,
-    /* mimeType: "application/json", */
-    url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
-    success: function(data){
-        console.log("JSON Data: " + data);
-        $.each(data, function(i, objectR){
-            projectsData.push(objectR);
-        })
-    }
-})
-
-/* projectsData.push({
-    name : "Project for example",
-    description : "Random description",
-    comments : "Some Comments",
-    category : ["Education"],
-    imgSrc : "",
-    location : "Europe",
-    raisedFunds : "1",
-    id : "6"
-});
-
-$.ajax({
-    dataType: "json",
-    async : false,
-    data : projectsData,
-    mimeType: "application/json",
-    url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
-    success: function(data){
-        console.log("JSON Data sent");
-    }
-}) */
-
-
 function viewModel() {
 
     var self = this;
 
+    if (!localStorage.projectsData) {
+        var ajaxData = [];
+
+        $.ajax({
+            dataType: "json",
+            async : false,
+            /* mimeType: "application/json", */
+            url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
+            success: function(data){
+                console.log("JSON Data: " + data);
+                $.each(data, function(i, objectR){
+                    ajaxData.push(objectR);
+                })
+            }
+        })
+
+        localStorage.setItem("projectsData", JSON.stringify(ajaxData));
+    }
+    
+    projectsData = JSON.parse(localStorage.projectsData);
     console.log(projectsData);
+
+    /* localStorage.projectsData = JSON.stringify(projectsData); */
     
     self.categories = ko.observableArray([ "Children", "Education" ]);
     self.locations = ko.observableArray([ "Africa", "America", "Asia", "Europe" ]);
@@ -147,144 +133,3 @@ function viewModel() {
 }
 
 ko.applyBindings(new viewModel());
-
-
-/* // Control for projets page
-
-var allowEdit = true;
-var projectToLoad = 1;
-
-function allowEdit(){
-    allowEdit = true;
-}
-function notAllowEdit(){
-    allowEdit = false;
-}
-
-function nextPage(){
-    document.cookie = "allowEdit=true";
-    console.log("In function nextPage...");
-    console.log("cookie: " + document.cookie);
-} */
-
-
-
-
-
-
-/* console.log(projectsData);
-
-projectsData.push({
-    name : "Project for example",
-    description : "Random description",
-    comments : "Some Comments",
-    category : ["Education"],
-    imgSrc : "",
-    location : "Europe",
-    raisedFunds : "1",
-    id : "6"
-});
-
-console.log(projectsData); */
-
-/* $.ajax({
-    dataType: "json",
-    mimeType: "application/json",
-    url: "data.json",
-    success: function(data){
-        console.log("JSON Data: " + data);
-        projectsData = JSON.parse(data);
-    }
-}) */
-
-/* $.getJSON("data.json", function(data){
-    console.log("JSON Data: " + data[0]);
-}); */
-
-/* function fetchJSONFile(path, callback) {
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = function() {
-        if (httpRequest.readyState === 4) {
-            if (httpRequest.status === 200) {
-                var data = JSON.parse(httpRequest.responseText);
-                if (callback) callback(data);
-            }
-        }
-    };
-    httpRequest.open('GET', path);
-    httpRequest.send(); 
-} */
-
-// this requests the file and executes a callback with the parsed result once
-//   it is available
-
-/* $.ajax({
-    type : 'GET',
-    dataType : 'json',
-    url: 'data.json',
-    success : function(data) {
-        console.log(data); 
-    } 
-});
-var projectsData = []; */
-
-
-/* fetchJSONFile('data.json', function(data){
-        // do something with your data
-        projectsData = data;
-        console.log(projectsData);
-    }); */
-
-    //console.log(projectsData);
-
-    /* projectsData.push({
-        name : "Project for example",
-        description : "Random description",
-        comments : "Some Comments",
-        category : ["Education"],
-        imgSrc : "",
-        location : "Europe",
-        raisedFunds : "1",
-        id : "6"
-    });
-
-    console.log(projectsData);
-
-    data = JSON.stringify(projectsData); */
-
-    /* var projectsData = [];
-
-    $.ajax({
-        type : 'GET',
-        dataType : 'json',
-        url: 'data.json',
-        async : false,
-        success : function(data) {
-            projectsData = data;
-        } 
-    });
-    
-    console.log(projectsData);
-    
-    projectsData.push({
-        name : "Project for example",
-        description : "Random description",
-        comments : "Some Comments",
-        category : ["Education"],
-        imgSrc : "",
-        location : "Europe",
-        raisedFunds : "1",
-        id : "6"
-    });
-    
-    console.log(projectsData);
-    
-    $.ajax({
-        type: "POST",
-        url: 'data.json',
-        data: JSON.stringify(projectsData),
-        success: function(){
-            console.log("Data sent");
-        },
-        dataType: 'json'
-      }); */

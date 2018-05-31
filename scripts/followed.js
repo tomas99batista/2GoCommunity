@@ -1,22 +1,31 @@
 
 var projectsData = [];
-
-$.ajax({
-    dataType: "json",
-    async : false,
-    /* mimeType: "application/json", */
-    url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
-    success: function(data){
-        console.log("JSON Data: " + data);
-        $.each(data, function(i, objectR){
-            projectsData.push(objectR);
-        })
-    }
-})
+var loginData = [];
 
 function viewModel() {
 
     var self = this;
+
+    if (!localStorage.projectsData) {
+        var ajaxData = [];
+
+        $.ajax({
+            dataType: "json",
+            async : false,
+            /* mimeType: "application/json", */
+            url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
+            success: function(data){
+                console.log("JSON Data: " + data);
+                $.each(data, function(i, objectR){
+                    ajaxData.push(objectR);
+                })
+            }
+        })
+
+        localStorage.setItem("projectsData", JSON.stringify(ajaxData));
+    }
+    
+    projectsData = JSON.parse(localStorage.projectsData);
     
     self.userId = ko.observable();
     //self.userId(document.URL.split("#")[1]);
@@ -44,8 +53,35 @@ function viewModel() {
     self.projects = ko.observableArray([]);
 
     var projectsDataThis = [];
+
+    if (!localStorage.loginData) {
+        var ajaxData = [];
+
+        $.ajax({
+            dataType: "json",
+            async : false,
+            /* mimeType: "application/json", */
+            url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/loginData.json",
+            success: function(data){
+                console.log("JSON Data: " + data);
+                $.each(data, function(i, objectR){
+                    ajaxData.push(objectR);
+                })
+            }
+        })
+
+        localStorage.setItem("loginData", JSON.stringify(ajaxData));
+    }
+    
+    loginData = JSON.parse(localStorage.loginData);
+
+    /* var user;
+    for(var i=0; i<loginData.length; i++){
+        if(loginData[i].userId==self.userId()) user = loginData[i];
+    } */
+
     initializeArray();
-    populateArray();
+    //populateArray();
 
     self.failMessage = document.getElementById("failMessage");
     self.failMessage.style.visibility = "hidden";
@@ -130,6 +166,7 @@ function viewModel() {
     }
 
     function populateArray() {
+        self.projects.removeAll();
         for(var i=0; i<projectsDataThis.length; i++){
             self.projects.push(projectsDataThis[i]);
             //ectsDataThis[i].userId == self.userId()) self.projects.push(projectsDataThis[i]);
@@ -137,13 +174,21 @@ function viewModel() {
     }
 
     function initializeArray() {
-        var user;
-        for(var i=0; i<loginData.length; i++){
-            if(loginData[i].userId==self.userId()) user = loginData[i];
-        }
+        projectsDataThis = [];
         for(var i=0; i<projectsData.length; i++){
-            if(user.followed.includes(projectsData[i].id)) projectsDataThis.push(projectsData[i]);
+            if(loginData[self.userId()].followed.includes(projectsData[i].id)) projectsDataThis.push(projectsData[i]);
         }
+        populateArray();
+    }
+
+    unfollow = function(data){
+        console.log(data);
+        //user.followed.pop(data.id);
+        for(var i=0; i<loginData[self.userId()].followed.length; i++){
+            if(loginData[self.userId()].followed[i] == data.id) loginData[self.userId()].followed.splice(i, 1);
+        }
+        localStorage.loginData = JSON.stringify(loginData);
+        initializeArray();
     }
 
 }
