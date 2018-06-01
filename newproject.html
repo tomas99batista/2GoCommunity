@@ -77,17 +77,11 @@
           <img class="form-control" data-bind="attr : { src : imgSrc }">
         </div>
         <div class="form-group">
-          <label for="latestUpdates">Latest Updates</label>
-          <!-- ko foreach : latestUpdates -->
-          <input data-bind="attr : { value : $data }" class="form-control" style="margin-top: 10px; " id="latestUpdates" rows="3" placeholder="Insert a description of your project here..."></input>
-          <!-- /ko -->
-        </div>
-        <div class="form-group">
           <label for="comments">Comments</label>
           <textarea data-bind="html : comments" class="form-control" style="margin-top: 10px; "id="comments" rows="3" placeholder="Insert a description of your project here..."></textarea>
         </div>
       <center> <span>
-        <button id="saveButton" type="button" class="btn btn-default btn-lg" data-bind="event : { click : saveChanges }">Save</button></span></center>
+        <button id="saveButton" type="button" class="btn btn-default btn-lg" data-bind="event : { click : createNew }">Create Project</button></span></center>
       </form>
     </div>
   </main>
@@ -97,7 +91,7 @@
   <script src="js/jquery-2.1.1.js"></script>
   <script src="js/jquery.mixitup.min.js"></script>
   <script src="js/main.js"></script> <!-- Resource jQuery -->
-  <script src="scripts/editproject.js"></script> <!-- Data Source -->
+  <script src="scripts/newproject.js"></script> <!-- Data Source -->
 
 </body>
 </html>
