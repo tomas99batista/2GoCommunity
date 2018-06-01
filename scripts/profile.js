@@ -9,6 +9,8 @@ function viewModel() {
 
     self.ownerId = ko.observable();
 
+    self.profile = ko.observable();
+
     if (!localStorage.projectsData) {
         var ajaxData = [];
 
@@ -69,61 +71,18 @@ function viewModel() {
         }
         else{
             var ownerIdStr = queryString.substring(1);
-            self.projectId(ownerIdStr.split("=")[1]);
+            self.ownerId(ownerIdStr.split("=")[1]);
             console.log("ownserId = " + self.ownerId());
         }
     }
 
     processForm();
 
-    console.log(loginData[self.userId()]);
+    self.profile(loginData[self.ownerId()]);
 
-    if(loginData[self.userId()].followed.includes(parseInt(self.projectId()))){
-        $("#followButton").html("Unfollow");
-    }
+    console.log(self.profile());
 
     console.log(projectsData);
-
-    function findProject(){
-        if (self.projectId() == 0){
-            return { name : "", 
-            description : "", 
-            comments : "" , 
-            category : [] , 
-            imgSrc : "" , 
-            location : ""  , 
-            raisedFunds : 1 ,
-            id : 6 }
-        }
-        for(var i=0; i<projectsData.length; i++){
-            if (projectsData[i].id == self.projectId()){
-                return projectsData[i];
-            }
-        }
-    }
-    
-    self.project = ko.observable();
-    self.project(findProject());
-
-    console.log(self.project());
-
-    follow = function(){
-        console.log("In function (Un)follow...");
-        console.log($("#followButton").html());
-        if($("#followButton").html()=="Follow"){
-            loginData[self.userId()].followed.push(parseInt(self.projectId()));
-            localStorage.loginData = JSON.stringify(loginData);
-            $("#followButton").html("Unfollow");
-        }
-        else{
-            for(var i=0; i<loginData[self.userId()].followed.length; i++){
-                if(loginData[self.userId()].followed[i] == self.projectId()) loginData[self.userId()].followed.splice(i, 1);
-            }
-            localStorage.loginData = JSON.stringify(loginData);
-            $("#followButton").html("Follow");
-        }
-        console.log(loginData[self.userId()].followed);
-    }
 
 }
 
