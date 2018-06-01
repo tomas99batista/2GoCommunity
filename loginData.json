@@ -8,7 +8,10 @@
     "area" : "Other" ,
     "name" : "Charity Institution Name 1",
     "recievedFunds" : 20564 ,
-    "donatedFunds" : 14025 },
+    "donatedFunds" : 14025 ,
+    "email" : "someemail@example.com" ,
+    "recieveNotifications" : "Yes" ,
+    "billingAdress" : "Some Adress 1" },
   { "userName" : "user", 
     "password" : "user",
     "userId" : 1 ,
@@ -18,7 +21,10 @@
     "area" : "Other" ,
     "name" : "Charity Institution Name 2",
     "recievedFunds" : 23476 ,
-    "donatedFunds" : 12354 },
+    "donatedFunds" : 12354 ,
+    "email" : "someemail2@example.com" ,
+    "recieveNotifications" : "No" ,
+    "billingAdress" : "Some Adress 2" },
   { "userName" : "test", 
     "password" : "test",
     "userId" : 2 ,
@@ -28,5 +34,8 @@
     "area" : "Other" ,
     "name" : "Charity Institution Name 3",
     "recievedFunds" : 34756 ,
-    "donatedFunds" : 12343 }
+    "donatedFunds" : 12343 ,
+    "email" : "someemail3@example.com" ,
+    "recieveNotifications" : "Yes" ,
+    "billingAdress" : "Some Adress 3" }
 ]

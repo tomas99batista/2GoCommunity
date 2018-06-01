@@ -6,10 +6,9 @@ function viewModel() {
     var projectsData = [];
     
     self.userId = ko.observable();
-
     self.ownerId = ko.observable();
-
     self.profile = ko.observable();
+    self.projects = ko.observableArray([]);
 
     if (!localStorage.projectsData) {
         var ajaxData = [];
@@ -77,6 +76,18 @@ function viewModel() {
     }
 
     processForm();
+
+    function getUserProjects(){
+        for(var i=0; i<projectsData.length; i++){
+            if(projectsData[i].userId == self.ownerId()){
+                self.projects.push(projectsData[i]);
+            }
+        }
+    }
+
+    getUserProjects();
+
+    console.log(self.projects());
 
     self.profile(loginData[self.ownerId()]);
 
