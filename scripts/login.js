@@ -5,6 +5,29 @@ function viewModel() {
 
     var self = this;
 
+    var loginData = [];
+    
+    if (!localStorage.loginData) {
+        var ajaxData = [];
+
+        $.ajax({
+            dataType: "json",
+            async : false,
+            /* mimeType: "application/json", */
+            url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/loginData.json",
+            success: function(data){
+                console.log("JSON Data: " + data);
+                $.each(data, function(i, objectR){
+                    ajaxData.push(objectR);
+                })
+            }
+        })
+
+        localStorage.setItem("loginData", JSON.stringify(ajaxData));
+    }
+    
+    loginData = JSON.parse(localStorage.loginData);
+
     self.userId = ko.observable();
 
     $("#loginForm").submit(function(){
