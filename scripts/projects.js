@@ -77,7 +77,7 @@ function viewModel() {
 
     self.projects = ko.observableArray([]);
     populateArray(projectsData);
-
+    
     console.log(self.projects());
 
     self.failMessage = document.getElementById("failMessage");

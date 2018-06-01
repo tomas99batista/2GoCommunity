@@ -33,7 +33,7 @@
 			<a class="nav-link" data-bind="attr : { href : 'projects.html' + '?id=' + userId() }">Projects</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link active" data-bind="attr : { href : 'myprojects.html' + '?id=' + userId() }">My Projects</a>
+			<a class="nav-link" data-bind="attr : { href : 'myprojects.html' + '?id=' + userId() }">My Projects</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" data-bind="attr : { href : 'followed.html' + '?id=' + userId() }">Followed Projects</a>
@@ -53,112 +53,105 @@
 		<h1>GoCommunity</h1>
 	</header>
 
-		<!-- <header class="cd-header2">
-			<h3>Support your favourite social project and keep tracking the evolution</h3>
-		</header> -->
+	<!-- <header class="cd-header2">
+		<h3>Support your favourite social project and keep tracking the evolution</h3>
+	</header> -->
 
 
-		<main class="cd-main-content">
-			<div data-bind="with : profile" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
-				<form>
+	<main class="cd-main-content">
+		<div data-bind="with : profile" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
+			<form>
 
-					<div class="form-group row" id="personName" style="margin-bottom: 10px;">					
-						<label for="personNameInput" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Name
+				<div class="form-group row" id="personNameD" style="margin-bottom: 10px;">					
+					<label for="personNameInput" class="col-lg-2" style="text-align: center; font-weight: bold;">
+						Name
+					</label>
+					<div class="col-lg-2">
+						<select class="form-control" id="personNameO">
+							<option selected>Choose one...</option>
+							<option>Institution</option>
+							<option>Individual Name</option>
+						</select>
+					</div>
+
+					<div class="col-lg-6"> 
+						<div data-bind="text : name " class="form-control" id="personName"></div>
+					</div>
+					<div class="col-lg-2">
+						<button class="btn-primary" data-bind="event: { click : showEmail }">Contact Manager</button>
+					</div>
+					
+				</div>	
+
+				<div class="form-group row" style="margin-top: 20px;">					
+					<label for="country" class="col-lg-2" style="text-align: center; font-weight: bold;">
+						Country
+					</label>
+					<div class="col-lg-8">
+						<div data-bind="text : country" class="form-control" id="country"></div>
+					</div>
+					<div class="col-lg-2">
+						<label for="donated" style="text-align: left; font-weight: bold;">
+							Donated
 						</label>
-						<div class="col-lg-2">
-							<select class="form-control" id="personName">
-								<option selected>Choose one...</option>
-								<option>Institution</option>
-								<option>Individual Name</option>
-							</select>
-						</div>
+						<span id="donated" class="col-lg-2" data-bind="text : donatedFunds + '€' "> 
+							xxx€
+						</span>
+					</div>
+				</div>	
 
-						<div class="col-lg-6"> 
-							<div data-bind="attr : { html : name }" type="text" class="form-control" id="personName"></div>
-						</div>
-							<div class="col-lg-2">
-							<button class="btn-primary">Contact Manager</button>
-						</div>
-						
-					</div>	
-
-	
-
-
-					<div class="form-group row" style="margin-top: 20px;">					
-						<label for="country" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Country
+				<div class="form-group row" style="margin-top: 20px;">					
+					<label for="area" class="col-lg-2" style="text-align: center; font-weight: bold;">
+						Area
+					</label>
+					<div class="col-lg-8" id="area">
+						<select class="form-control" id="personName" data-bind="value : area">
+							<option selected>Choose one...</option>
+							<option>Animal</option>
+							<option>Charity Institution</option>
+							<option>Children</option>
+							<option>Education</option>
+							<option>Other</option>
+						</select>
+					</div>
+					<div class="col-lg-2">
+						<label for="received" style="text-align: left; font-weight: bold;">
+							Received
 						</label>
-						<div class="col-lg-8">
-							<div data-bind="attr : { html : country }" type="text" class="form-control" id="country"></div>
-						</div>
-						<div class="col-lg-2">
-							<label for="donated" style="text-align: left; font-weight: bold;">
-								Donated
-							</label>
-							<span id="donated" class="col-lg-2" data-bind="text : donatedFunds + '€' "> 
-								xxx€
-							</span>
-						</div>
-					</div>	
+						<span id="received" class="col-lg-2" data-bind="text : recievedFunds + '€' "> 
+							xxx€
+						</span>
+					</div>
+				</div>	
 
-					<div class="form-group row" style="margin-top: 20px;">					
-						<label for="area" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Area
-						</label>
-						<div class="col-lg-8" id="area">
-							<select class="form-control" id="personName" data-bind="value : area">
-								<option selected>Choose one...</option>
-								<option>Animal</option>
-								<option>Charity Institution</option>
-								<option>Children</option>
-								<option>Education</option>
-								<option>Other</option>
-							</select>
-						</div>
-						<div class="col-lg-2">
-							<label for="received" style="text-align: left; font-weight: bold;">
-								Received
-							</label>
-							<span id="received" class="col-lg-2" data-bind="text : recievedFunds + '€' "> 
-								xxx€
-							</span>
-						</div>
-					</div>	
-					 	
+				<div class="form-group row" style="margin-top: 20px;">					
+					<label for="description" class="col-lg-2" style="text-align: center; font-weight: bold;">
+						Brief description
+					</label>
+					<div class="col-lg-8" id="description">
+						<div class="form-control" id="description" rows="3" data-bind="text : description"></div>
+					</div>
+				</div>	
 
-					<div class="form-group row" style="margin-top: 20px;">					
-						<label for="description" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Brief description
-						</label>
-						<div class="col-lg-8" id="description">
-							<div class="form-control" id="description" rows="3" data-bind="text : description"></div>
-						</div>
-					</div>	
+				<div class="form-group row" style="margin-top: 20px;">					
+					<label for="projects" class="col-lg-2" style="text-align: center; font-weight: bold;">
+						Projects
+					</label>
+					<!-- ko foreach : $parent.projects -->
+					<div class="col-lg-8">
+						<a class="form-control" data-bind="attr : { href : 'project.html?id=' + $parent.userId + '&projectId=' + id }, text : name"></a>
+					</div>
+					<!-- /ko  -->
+				</div>	
 
-					<div class="form-group row" style="margin-top: 20px;">					
-						<label for="projects" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Projects
-						</label>
-						<!-- ko foreach : $parent.projects -->
-						<div class="col-lg-8">
-							<a class="form-control" data-bind="attr : { href : 'project.html?id=' + $parent.userId + '&projectId=' + id }, text : name"></a>
-						</div>
-						<!-- /ko  -->
-					</div>	
-
-					</form>
-				</div>
-			</main>
+			</form>
+		</div>
+	</main> <!-- cd-main-content -->
 
 
-
-		</main> <!-- cd-main-content -->
-		<script src="js/jquery-2.1.1.js"></script>
-		<script src="js/jquery.mixitup.min.js"></script>
-		<script src="js/main.js"></script> <!-- Resource jQuery -->
-		<script type="text/javascript" src="scripts/profile.js"></script>
-		<!-- <script type="text/javascript" src="index.js"></script> <!-- Data Source --> -->
-	</body>
-	</html>
+	<script src="js/jquery-2.1.1.js"></script>
+	<script src="js/jquery.mixitup.min.js"></script>
+	<script src="js/main.js"></script> <!-- Resource jQuery -->
+	<script type="text/javascript" src="scripts/profile.js"></script>
+</body>
+</html>

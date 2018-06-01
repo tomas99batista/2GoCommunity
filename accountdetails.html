@@ -25,14 +25,23 @@
 <body>
 
 	<ul class="nav justify-content-end nav-pills">
+		<!-- <li class="nav-item">
+			<a class="nav-link" href="index.html">HomePage</a>
+		</li> -->
 		<li class="nav-item">
-			<a class="nav-link active" href="#">HomePage</a>
+			<a class="nav-link" data-bind="attr : { href : 'projects.html' + '?id=' + userId() }">Projects</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="projectsG.html">Projects</a>
+			<a class="nav-link" data-bind="attr : { href : 'myprojects.html' + '?id=' + userId() }">My Projects</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link" href="login.html">Login</a>
+			<a class="nav-link" data-bind="attr : { href : 'followed.html' + '?id=' + userId() }">Followed Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" data-bind="attr : { href : 'accountdetails.html' + '?id=' + userId() }">Account Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="projects.html">Log Out</a>
 		</li>
 		<!-- <li class="nav-item">
 			<a class="nav-link disabled" href="#">Disabled</a>
@@ -52,12 +61,12 @@
 			<div data-bind="with : profile" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
 				<form>
 
-					<div class="form-group row" id="personName" style="margin-bottom: 10px;">					
+					<div class="form-group row" id="personNameA" style="margin-bottom: 10px;">					
 						<label for="personNameInput" class="col-lg-2" style="text-align: center; font-weight: bold;">
 							Name
 						</label>
 						<div class="col-lg-2">
-							<select class="form-control" id="personName">
+							<select class="form-control" id="personNameOption">
 								<option selected>Choose one...</option>
 								<option>Institution</option>
 								<option>Individual Name</option>
@@ -78,15 +87,13 @@
 						</div>
 					</div>	
 
-
-
 					<div class="form-group row" style="margin-top: 20px;">					
 						<label for="bilingAdress" class="col-lg-2" style="text-align: center; font-weight: bold;">
-							Biling Adress
+							Billing Adress
 						</label>
 
 						<div class="col-lg-8">
-							<input data-bind="attr : { value : bilingAdress }" type="text" class="form-control" id="bilingAdress" placeholder="Insert your biling adress...">
+							<input data-bind="attr : { value : billingAdress }" type="text" class="form-control" id="billingAdress" placeholder="Insert your biling adress...">
 						</div>
 						<div class="col-lg-2">
 							<label for="received" style="text-align: left; font-weight: bold;">
@@ -97,7 +104,6 @@
 							</span>
 						</div>
 					</div>	
-
 
 					<div class="form-group row" style="margin-top: 20px;">					
 						<label for="country" class="col-lg-2" style="text-align: center; font-weight: bold;">
@@ -124,8 +130,8 @@
 							Receive e-mail notifications
 						</label>
 						<div class="col-lg-8" id="receiveEmail">
-							<input type="radio" name="optradio" value="Yes" data-bind="checked : recieveNotifications"><label class="radio-inline" style="margin-right: 10px;">Yes</label>
-							<input type="radio" name="optradio" value="No" data-bind="checked : recieveNotifications"><label class="radio-inline">No</label>
+							<input id="recieveEmail" type="radio" name="optradio" value="Yes" data-bind="checked : recieveNotifications"><label class="radio-inline" style="margin-right: 10px;">Yes</label>
+							<input id="recieveEmail" type="radio" name="optradio" value="No" data-bind="checked : recieveNotifications"><label class="radio-inline">No</label>
 						</div>
 					</div>	
 
@@ -133,8 +139,8 @@
 						<label for="area" class="col-lg-2" style="text-align: center; font-weight: bold;">
 							Area
 						</label>
-						<div class="col-lg-8" id="area">
-							<select class="form-control" id="personName" data-bind="value : area">
+						<div class="col-lg-8">
+							<select class="form-control" id="area" data-bind="value : area">
 								<option selected>Choose one...</option>
 								<option>Animal</option>
 								<option>Charity Institution</option>
@@ -145,17 +151,14 @@
 						</div>
 					</div>	
 					 	
-
 					<div class="form-group row" style="margin-top: 20px;">					
 						<label for="description" class="col-lg-2" style="text-align: center; font-weight: bold;">
 							Brief description
 						</label>
-						<div class="col-lg-8" id="description">
+						<div class="col-lg-8" id="descriptionD">
 							<textarea data-bind="html : description" class="form-control" id="description" rows="3" placeholder="Insert a brief description..."></textarea>
 						</div>
 					</div>	
-
-					
 
 					<center> <span>
 						<button id="saveButton" type="button" class="btn btn-default btn-lg" data-bind="event : { click : saveChanges }">Save</button>

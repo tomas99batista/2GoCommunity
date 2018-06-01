@@ -77,8 +77,10 @@ function viewModel() {
 
     console.log(loginData[self.userId()]);
 
-    if(loginData[self.userId()].followed.includes(parseInt(self.projectId()))){
-        $("#followButton").html("Unfollow");
+    if(self.userId()!=undefined){
+        if(loginData[self.userId()].followed.includes(parseInt(self.projectId()))){
+            $("#followButton").html("Unfollow");
+        }
     }
 
     console.log(projectsData);

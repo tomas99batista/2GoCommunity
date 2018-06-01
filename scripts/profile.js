@@ -93,7 +93,11 @@ function viewModel() {
 
     console.log(self.profile());
 
-    console.log(projectsData);
+    //console.log(projectsData);
+
+    showEmail = function() {
+        alert("Owner's E-mail: " + self.profile().email);
+    }
 
 }
 
