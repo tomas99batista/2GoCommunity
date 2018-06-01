@@ -49,7 +49,7 @@
 
 
 		<main class="cd-main-content">
-			<div data-bind="with : project" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
+			<div data-bind="with : profile" class="container" style="padding-top: 15px; margin-top: 15px; padding-bottom: 15px; padding-left: 15px; padding-right: 15px;  background-color: white;">
 				<form>
 
 					<div class="form-group row" id="personName" style="margin-bottom: 10px;">					
@@ -72,7 +72,7 @@
 							<label for="donated" style="text-align: left; font-weight: bold;">
 								Donated
 							</label>
-							<span id="donated" class="col-lg-2"> 
+							<span id="donated" class="col-lg-2" data-bind="text : donatedFunds + '€'"> 
 								xxx€
 							</span>
 						</div>
@@ -86,13 +86,13 @@
 						</label>
 
 						<div class="col-lg-8">
-							<input data-bind="attr : { value : name }" type="text" class="form-control" id="bilingAdress" placeholder="Insert your biling adress...">
+							<input data-bind="attr : { value : bilingAdress }" type="text" class="form-control" id="bilingAdress" placeholder="Insert your biling adress...">
 						</div>
 						<div class="col-lg-2">
 							<label for="received" style="text-align: left; font-weight: bold;">
 								Received
 							</label>
-							<span id="received" class="col-lg-2"> 
+							<span id="received" class="col-lg-2" data-bind="text : recievedFunds + '€'"> 
 								xxx€
 							</span>
 						</div>
@@ -104,7 +104,7 @@
 							Country
 						</label>
 						<div class="col-lg-8">
-							<input data-bind="attr : { value : name }" type="text" class="form-control" id="country" placeholder="Insert your country...">
+							<input data-bind="attr : { value : country }" type="text" class="form-control" id="country" placeholder="Insert your country...">
 						</div>
 						
 					</div>	
@@ -114,7 +114,7 @@
 							E-mail
 						</label>
 						<div class="col-lg-8">
-							<input data-bind="attr : { value : name }" type="email" class="form-control" id="email" placeholder="Insert your email...">
+							<input data-bind="attr : { value : email }" type="email" class="form-control" id="email" placeholder="Insert your email...">
 						</div>
 						
 					</div>	
@@ -124,8 +124,8 @@
 							Receive e-mail notifications
 						</label>
 						<div class="col-lg-8" id="receiveEmail">
-							<label class="radio-inline" style="margin-right: 10px;"><input type="radio" name="optradio" value="yes">Yes</label>
-							<label class="radio-inline"><input type="radio" name="optradio" value="no">No</label>
+							<label class="radio-inline" style="margin-right: 10px;"><input type="radio" name="optradio" value="Yes" data-bind="checked : recieveNotifications">Yes</label>
+							<label class="radio-inline"><input type="radio" name="optradio" value="No">No</label>
 						</div>
 					</div>	
 
@@ -134,7 +134,7 @@
 							Area
 						</label>
 						<div class="col-lg-8" id="area">
-							<select class="form-control" id="personName">
+							<select class="form-control" id="personName" data-bind="value : area">
 								<option selected>Choose one...</option>
 								<option>Animal</option>
 								<option>Charity Institution</option>
@@ -151,7 +151,7 @@
 							Brief description
 						</label>
 						<div class="col-lg-8" id="description">
-							<textarea class="form-control" id="description" rows="3" placeholder="Insert a brief description..."></textarea>
+							<textarea data-bind="html : description" class="form-control" id="description" rows="3" placeholder="Insert a brief description..."></textarea>
 						</div>
 					</div>	
 
@@ -170,7 +170,6 @@
 		<script src="js/jquery-2.1.1.js"></script>
 		<script src="js/jquery.mixitup.min.js"></script>
 		<script src="js/main.js"></script> <!-- Resource jQuery -->
-		<script type="text/javascript" src="data.js"></script>
-		<script type="text/javascript" src="index.js"></script> <!-- Data Source -->
+		<script type="text/javascript" src="scripts/accountDetails.js"></script> <!-- Data Source -->
 	</body>
 	</html>
