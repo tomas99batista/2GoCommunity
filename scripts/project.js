@@ -1,88 +1,61 @@
 
-var projectsData = [];
-
-var projectId;
-var allowEdit;
-
-$.ajax({
-    dataType: "json",
-    async : false,
-    /* mimeType: "application/json", */
-    url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
-    success: function(data){
-        console.log("JSON Data: " + data);
-        $.each(data, function(i, objectR){
-            projectsData.push(objectR);
-        })
-    }
-})
-
-function processForm(){
-    /* console.log("In function porcessForm...");
-    var parameters = document.URL.split("#")[1];
-    if (parameters.includes("$")){
-        projectId = parameters.split("$")[0];
-        allowEdit = true;
-    }
-    else{
-        projectId = parameters;
-        allowEdit = false;
-    }
-    console.log("projectId: " + projectId + "; allowEdit: " + allowEdit); */
-
-    var queryString = decodeURIComponent(window.location.search);
-    var projectIdStr = queryString.substring(1);
-
-    projectId = projectIdStr.split("=")[1];
-
-    /* console.log(queryString);
-    console.log(userIdStr); */
-
-    console.log("projectId = " + projectId);
-}
-
-processForm();
-
-console.log(projectsData);
-
-/* if(!allowEdit){
-    document.getElementById("saveButton").disabled = true;
-    document.getElementById("cancelButton").disabled = true;
-    document.getElementById("saveButton").hidden = true;
-    document.getElementById("cancelButton").hidden = true;
-
-    //document.getElementsByClassName("form-control").disabled = true;
-    var inputs = document.getElementsByClassName("form-control");
-    for(var i=0; i<inputs.length; i++){
-        inputs[i].readOnly = true;
-        inputs[i].placeholder = "";
-    }
-    document.getElementsByClassName("form-control-file")[0].disabled = true;
-    document.getElementsByClassName("form-control-file")[0].hidden = true;
-
-} */
-
-function findProject(){
-    if (projectId == 0){
-        return { name : "", 
-        description : "", 
-        comments : "" , 
-        category : [] , 
-        imgSrc : "" , 
-        location : ""  , 
-        raisedFunds : 1 ,
-        id : 6 }
-    }
-    for(var i=0; i<projectsData.length; i++){
-        if (projectsData[i].id == projectId){
-            return projectsData[i];
-        }
-    }
-}
-
 function viewModel() {
 
     var self = this;
+
+    var projectsData = [];
+    self.projectId = ko.observable();
+
+    if (!localStorage.projectsData) {
+        var ajaxData = [];
+
+        $.ajax({
+            dataType: "json",
+            async : false,
+            /* mimeType: "application/json", */
+            url: "https://rawgit.com/joao-p-marques/2GoCommunity/master/data.json",
+            success: function(data){
+                console.log("JSON Data: " + data);
+                $.each(data, function(i, objectR){
+                    ajaxData.push(objectR);
+                })
+            }
+        })
+
+        localStorage.setItem("projectsData", JSON.stringify(ajaxData));
+    }
+    
+    projectsData = JSON.parse(localStorage.projectsData);
+
+    function processForm(){
+        var queryString = decodeURIComponent(window.location.search);
+        var projectIdStr = queryString.substring(1);
+
+        self.projectId(projectIdStr.split("=")[1]);
+        console.log("projectId = " + self.projectId());
+    }
+
+    processForm();
+
+    console.log(projectsData);
+
+    function findProject(){
+        if (self.projectId() == 0){
+            return { name : "", 
+            description : "", 
+            comments : "" , 
+            category : [] , 
+            imgSrc : "" , 
+            location : ""  , 
+            raisedFunds : 1 ,
+            id : 6 }
+        }
+        for(var i=0; i<projectsData.length; i++){
+            if (projectsData[i].id == self.projectId()){
+                return projectsData[i];
+            }
+        }
+    }
     
     self.project = ko.observable();
     self.project(findProject());
