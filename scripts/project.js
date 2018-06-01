@@ -6,7 +6,7 @@ function viewModel() {
     var projectsData = [];
     self.projectId = ko.observable();
 
-    if (!localStorage.projectsData) {
+    if (localStorage.projectsData) {
         var ajaxData = [];
 
         $.ajax({
