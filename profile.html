@@ -26,17 +26,26 @@
 
 	<!-- NAV -->
 	<ul class="nav justify-content-end nav-pills">
+		<!-- <li class="nav-item">
+			<a class="nav-link" href="index.html">HomePage</a>
+		</li> -->
 		<li class="nav-item">
-		  <a class="nav-link" href="index.html">HomePage</a>
+			<a class="nav-link" data-bind="attr : { href : 'projects.html' + '?id=' + userId() }">Projects</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link active" href="projectsG.html">Projects</a>
+			<a class="nav-link active" data-bind="attr : { href : 'myprojects.html' + '?id=' + userId() }">My Projects</a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="login.html">Login</a>
+			<a class="nav-link" data-bind="attr : { href : 'followed.html' + '?id=' + userId() }">Followed Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-bind="attr : { href : 'accountdetails.html' + '?id=' + userId() }">Account Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="projects.html">Log Out</a>
 		</li>
 		<!-- <li class="nav-item">
-		  <a class="nav-link disabled" href="#">Disabled</a>
+			<a class="nav-link disabled" href="#">Disabled</a>
 		</li> -->
 	</ul>
 
@@ -66,7 +75,7 @@
 						</div>
 
 						<div class="col-lg-6"> 
-							<input data-bind="attr : { value : userName }" type="text" class="form-control" id="personName">
+							<div data-bind="attr : { html : name }" type="text" class="form-control" id="personName"></div>
 						</div>
 							<div class="col-lg-2">
 							<button class="btn-primary">Contact Manager</button>
@@ -82,13 +91,13 @@
 							Country
 						</label>
 						<div class="col-lg-8">
-							<input data-bind="attr : { value : name }" type="text" class="form-control" id="country">
+							<div data-bind="attr : { html : country }" type="text" class="form-control" id="country"></div>
 						</div>
 						<div class="col-lg-2">
 							<label for="donated" style="text-align: left; font-weight: bold;">
 								Donated
 							</label>
-							<span id="donated" class="col-lg-2"> 
+							<span id="donated" class="col-lg-2" data-bind="text : donatedFunds + '€' "> 
 								xxx€
 							</span>
 						</div>
@@ -99,7 +108,7 @@
 							Area
 						</label>
 						<div class="col-lg-8" id="area">
-							<select class="form-control" id="personName">
+							<select class="form-control" id="personName" data-bind="value : area">
 								<option selected>Choose one...</option>
 								<option>Animal</option>
 								<option>Charity Institution</option>
@@ -112,7 +121,7 @@
 							<label for="received" style="text-align: left; font-weight: bold;">
 								Received
 							</label>
-							<span id="received" class="col-lg-2"> 
+							<span id="received" class="col-lg-2" data-bind="text : recievedFunds + '€' "> 
 								xxx€
 							</span>
 						</div>
@@ -124,7 +133,7 @@
 							Brief description
 						</label>
 						<div class="col-lg-8" id="description">
-							<textarea class="form-control" id="description" rows="3" ></textarea>
+							<div class="form-control" id="description" rows="3" data-bind="text : description"></div>
 						</div>
 					</div>	
 
@@ -132,9 +141,11 @@
 						<label for="projects" class="col-lg-2" style="text-align: center; font-weight: bold;">
 							Projects
 						</label>
-						<div class="col-lg-8" id="projects">
-							projects here
+						<!-- ko foreach : $parent.projects -->
+						<div class="col-lg-8">
+							<a class="form-control" data-bind="attr : { href : 'project.html?id=' + $parent.userId + '&projectId=' + id }, text : name"></a>
 						</div>
+						<!-- /ko  -->
 					</div>	
 
 					</form>

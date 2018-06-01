@@ -54,19 +54,28 @@
 
   <!-- NAV -->
   <ul class="nav justify-content-end nav-pills">
-    <li class="nav-item">
-      <a class="nav-link" href="index.html">HomePage</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="projectsG.html">Projects</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="login.html">Login</a>
-    </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li> -->
-  </ul>
+		<!-- <li class="nav-item">
+			<a class="nav-link" href="index.html">HomePage</a>
+		</li> -->
+		<li class="nav-item">
+			<a class="nav-link" data-bind="attr : { href : 'projects.html' + '?id=' + userId() }">Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link active" data-bind="attr : { href : 'myprojects.html' + '?id=' + userId() }">My Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-bind="attr : { href : 'followed.html' + '?id=' + userId() }">Followed Projects</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" data-bind="attr : { href : 'accountdetails.html' + '?id=' + userId() }">Account Details</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="projects.html">Log Out</a>
+		</li>
+		<!-- <li class="nav-item">
+			<a class="nav-link disabled" href="#">Disabled</a>
+		</li> -->
+	</ul>
   
   <header class="cd-header">
     <h1>GoCommunity</h1>
