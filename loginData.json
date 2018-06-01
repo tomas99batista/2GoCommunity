@@ -10,7 +10,7 @@
     "recievedFunds" : 20564 ,
     "donatedFunds" : 14025 ,
     "email" : "someemail@example.com" ,
-    "recieveNotifications" : true ,
+    "recieveNotifications" : "Yes" ,
     "billingAdress" : "Some Adress 1" },
   { "userName" : "user", 
     "password" : "user",
@@ -23,7 +23,7 @@
     "recievedFunds" : 23476 ,
     "donatedFunds" : 12354 ,
     "email" : "someemail2@example.com" ,
-    "recieveNotifications" : false ,
+    "recieveNotifications" : "No" ,
     "billingAdress" : "Some Adress 2" },
   { "userName" : "test", 
     "password" : "test",
@@ -36,6 +36,6 @@
     "recievedFunds" : 34756 ,
     "donatedFunds" : 12343 ,
     "email" : "someemail3@example.com" ,
-    "recieveNotifications" : true ,
+    "recieveNotifications" : "Yes" ,
     "billingAdress" : "Some Adress 3" }
 ]
