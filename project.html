@@ -99,17 +99,19 @@
         <div class="form-group">
           <label for="latestUpdates">Latest Updates</label>
           <!-- ko foreach : latestUpdates -->
-          <div class="form-control" style="margin-top: 10px;" id="latestUpdates" data-bind="text : $data"></div>
+          <div class="form-control" style="margin-top: 10px;" data-bind="text : $data"></div>
           <!-- /ko -->
         </div>
         <div class="form-group">
           <label for="comments">Comments</label>
-          <div data-bind="html : comments" class="form-control" style="margin-top: 10px; "id="comments"></textarea>
+          <!-- ko foreach : comments -->
+          <div data-bind="text : $data" class="form-control" style="margin-top: 10px;"></div>
+          <!-- /ko -->
         </div>
-        <!-- <center> <span>
-          <button id="saveButton" type="button" class="btn btn-default btn-lg">Save</button>
-          <button id="cancelButton" type="button" class="btn btn-danger btn-lg">Cancel</button></span>
-        </center> -->
+        <center> <span>
+          <button id="followButton" type="button" class="btn btn-default btn-lg" data-bind="event : { click : follow }">Follow</button></span>
+        </center>
+        <center><button id="ownerButton" type="button" class="btn btn-danger btn-lg"><a data-bind="attr : { href : 'profile.html?id=' + $parent.userId() + '&ownerId=' + userId }">Visit Owner's Page</a></button></center>
       </div>
     </div>
   </main>
