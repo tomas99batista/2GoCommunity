@@ -6,7 +6,6 @@ function viewModel() {
     var projectsData = [];
     
     self.userId = ko.observable();
-    self.ownerId = ko.observable();
     self.profile = ko.observable();
     self.projects = ko.observableArray([]);
 
@@ -56,30 +55,16 @@ function viewModel() {
 
     function processForm(){
         var queryString = decodeURIComponent(window.location.search);
-        
-        if(queryString.includes("&")){
-            var valuesString = queryString.substring(1).split("&");
-            var userIdStr = valuesString[0]
-            var ownerIdStr = valuesString[1];
-
-            self.userId(userIdStr.split("=")[1]);
-            self.ownerId(ownerIdStr.split("=")[1]);
-
-            console.log("userId = " + self.userId());
-            console.log("ownerId = " + self.ownerId());
-        }
-        else{
-            var ownerIdStr = queryString.substring(1);
-            self.ownerId(ownerIdStr.split("=")[1]);
-            console.log("ownserId = " + self.ownerId());
-        }
+        var userIdStr = queryString.substring(1);
+        self.userId(userIdStr.split("=")[1]);
+        console.log("userId = " + self.userId());
     }
 
     processForm();
 
     function getUserProjects(){
         for(var i=0; i<projectsData.length; i++){
-            if(projectsData[i].userId == self.ownerId()){
+            if(projectsData[i].userId == self.userId()){
                 self.projects.push(projectsData[i]);
             }
         }
@@ -89,14 +74,26 @@ function viewModel() {
 
     console.log(self.projects());
 
-    self.profile(loginData[self.ownerId()]);
+    self.profile(loginData[self.userId()]);
 
     console.log(self.profile());
 
-    //console.log(projectsData);
+    console.log(projectsData);
 
-    showEmail = function() {
-        alert("Owner's E-mail: " + self.profile().email);
+    saveChanges = function(){
+        console.log("in function save changes...");
+
+        loginData[self.userId()].name = $("#personName").val();
+        loginData[self.userId()].billingAdress = $("#billingAdress").val();
+        loginData[self.userId()].country = $("#country").val();
+        loginData[self.userId()].email = $("#email").val();
+        loginData[self.userId()].recieveNotifications = $("input[name=optradio]:checked").val();
+        loginData[self.userId()].area = $("#area").val();
+        loginData[self.userId()].description = $("#description").val();
+
+        console.log(loginData[self.userId()]);
+
+        localStorage.loginData = JSON.stringify(loginData);
     }
 
 }
