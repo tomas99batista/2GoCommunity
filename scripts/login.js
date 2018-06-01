@@ -51,7 +51,7 @@ function viewModel() {
                 self.userId(loginData[i].userId);
                 console.log(self.userId);
                 $("#loginForm").attr('action', 'projects.html');
-                alert("Log in successful. Form Action: " + $("#loginForm").attr('action'));
+                alert("Log in successful.");
                 $("#loginForm").submit();
                 // + '?id=' + self.userId()
             }
