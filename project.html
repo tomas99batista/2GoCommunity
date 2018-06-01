@@ -98,7 +98,9 @@
         </div>
         <div class="form-group">
           <label for="latestUpdates">Latest Updates</label>
-          <div class="form-control" style="margin-top: 10px; "id="latestUpdates"></textarea>
+          <!-- ko foreach : latestUpdates -->
+          <div class="form-control" style="margin-top: 10px;" id="latestUpdates" data-bind="text : $data"></div>
+          <!-- /ko -->
         </div>
         <div class="form-group">
           <label for="comments">Comments</label>
