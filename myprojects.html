@@ -60,6 +60,7 @@
 		<section class="cd-gallery">
 			<div class="album bg-ligth">
 				<div class="container">
+						<button class="btn btn-primary"><a data-bind="attr : { href : 'newproject.html?id=' + userId() }">New Project</a></button>
 					<div class="row">
 						<!-- ko foreach : projects -->
 						<div class="mix col-md-4">
@@ -73,7 +74,7 @@
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="btn-group">
 										<button type="button" class="btn btn-sm btn-outline-secondary"><a data-bind="attr : { href : 'project.html?id='+ $parent.userId() + '&projectId=' + id }">View</a></button>
-										<button type="button" class="btn btn-sm btn-outline-secondary"><a data-bind="attr : { href : 'project.html#'+id+'$' }">Edit</a></button>
+										<button type="button" class="btn btn-sm btn-outline-secondary"><a data-bind="attr : { href : 'editproject.html?id='+$parent.userId()+'&projectId='+id }">Edit</a></button>
 										</div>
 									</div>
 								</div>
@@ -150,7 +151,6 @@
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/jquery.mixitup.min.js"></script>
 <script src="js/main.js"></script> <!-- Resource jQuery -->
-<script type="text/javascript" src="scripts/data.js"></script>
 <script type="text/javascript" src="scripts/myprojects.js"></script> <!-- Data Source -->
 </body>
 </html>
