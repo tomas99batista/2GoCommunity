@@ -6,6 +6,8 @@ function viewModel() {
 
     var self = this;
 
+    var tempData;
+
     if (!localStorage.projectsData) {
         var ajaxData = [];
 
@@ -189,6 +191,22 @@ function viewModel() {
         }
         localStorage.loginData = JSON.stringify(loginData);
         initializeArray();
+    }
+
+    storeElement = function(data) {
+        tempData = data;
+    }
+
+    comment = function(data){
+        console.log("In function comment...");
+        console.log("Project: " + tempData);
+        console.log("Comment: " + $("#commentText").val());
+        for(var i=0; i<projectsData.length; i++){
+            if(projectsData[i].id==tempData.id){
+                projectsData[i].comments.push($("#commentText").val());
+            }
+        }
+        localStorage.projectsData = JSON.stringify(projectsData);
     }
 
 }
