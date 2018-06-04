@@ -92,6 +92,8 @@ function viewModel() {
         if(filterText!=""){
             for(var i=0; i<projectsData.length; i++) {
                 //console.log("to Search = " + filterText + " ; arrayData = " + self.projects()[i].name);
+                console.log("filterText: " + filterText);
+                /* console.log("filterText: " + filterText); */
                 if(projectsData[i].name.toUpperCase().includes(filterText.toUpperCase())){
                     self.projects.push(projectsData[i]);
                 }
