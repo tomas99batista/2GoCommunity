@@ -126,6 +126,12 @@ function viewModel() {
         console.log(loginData[self.userId()].followed);
     }
 
+    donate = function(){
+        console.log("In function donate...");
+        projectsData[self.projectId()-1].raisedFunds = parseInt(projectsData[self.projectId()-1].raisedFunds) + parseInt($("#amount").val());
+        localStorage.projectsData = JSON.stringify(projectsData);
+    }
+
 }
 
 ko.applyBindings(new viewModel());

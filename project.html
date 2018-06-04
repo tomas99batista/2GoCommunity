@@ -9,7 +9,9 @@
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 	
-	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
 	<link rel="stylesheet" href="css/album.css"> <!-- Album resource -->
 	<script src="js/modernizr.js"></script> <!-- Modernizr -->
@@ -121,9 +123,58 @@
           <button id="followButton" type="button" class="btn btn-default btn-lg" data-bind="event : { click : follow }">Follow</button></span>
         </center>
         <center><button id="ownerButton" type="button" class="btn btn-danger btn-lg"><a data-bind="attr : { href : 'profile.html?id=' + $parent.userId() + '&ownerId=' + userId }">Visit Owner's Page</a></button></center>
+        <center><button id="donateButton" data-toggle="modal" data-target="#donateModal" type="button" class="btn btn-primary btn-lg">Donate</a></button></center>
       </div>
     </div>
   </main>
+
+  <!-- Modal -->
+  <div class="modal fade" id="donateModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+                
+                    
+          <div class="modal-body modal-content animate" action="projectsG.html" style="background-color:#DDDDDD; position:relative;  vertical-align: middle;
+">
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="amount">Amount:</label>
+                  <div class="col-sm-10">
+                      <input type="text" class="form-control" style="margin-top: 10px;" id="amount" placeholder="Enter the amount">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <label class="control-label col-sm-2" for="currency">Currency:</label>
+                  <div class="col-sm-10">
+                      <input type="text" style="margin-top: 10px;" class="form-control" id="currency" placeholder="Enter the currency">
+                  </div>
+              </div>
+              <div class="form-group">
+                  <select class="form-control">
+                      <option selected="">How do you want to pay...</option>
+                      <option>PayPal</option>
+                      <option>MB WAY</option>
+                      <option>PaySafeCard</option>
+                      <option>SKRILL</option>
+                  </select>
+              </div>
+              <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                      <button type="submit" class="btn btn-danger btn-lg" data-dismiss="modal" data-bind="event : { click : donate }">Submit</button>
+                  </div>
+              </div>
+          </div>
+
+            <!--<div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Comment</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>-->
+        </div>
+
+    </div>
+</div>
+<!--End Modal-->
 
   
 
@@ -132,6 +183,8 @@
   <script src="js/main.js"></script> <!-- Resource jQuery -->
   <!-- <script type="text/javascript" src="data.js"></script> -->
   <script type="text/javascript" src="scripts/project.js"></script> <!-- Data Source -->
-
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 </body>
 </html>
