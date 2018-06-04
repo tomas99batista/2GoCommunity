@@ -101,7 +101,7 @@ function viewModel() {
         }
         else{
             //console.log("filterText is null");
-            populateArray();
+            populateArray(projectsData);
         }
 
         //console.log("A. Search: " + self.projects().length);
@@ -127,7 +127,7 @@ function viewModel() {
                 }
             }
         }
-        if(noneIsChecked) populateArray();
+        if(noneIsChecked) populateArray(projectsData);
         if(self.projects().length == 0) self.failMessage.style.visibility = "visible";
         else self.failMessage.style.visibility = "hidden";
     }
@@ -142,7 +142,7 @@ function viewModel() {
                 self.projects.push(projectsData[j]);
             }
         }
-        if(selectedValue == 0) populateArray();
+        if(selectedValue == 0) populateArray(projectsData);
         if(self.projects().length == 0) self.failMessage.style.visibility = "visible";
         else self.failMessage.style.visibility = "hidden";
     }
@@ -159,7 +159,7 @@ function viewModel() {
                 }
             }
         }
-        if(document.getElementById("radioAll").checked) populateArray();
+        if(document.getElementById("radioAll").checked) populateArray(projectsData);
         if(self.projects().length == 0) self.failMessage.style.visibility = "visible";
         else self.failMessage.style.visibility = "hidden";
     }
