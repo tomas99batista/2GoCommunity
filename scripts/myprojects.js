@@ -4,6 +4,7 @@ function viewModel() {
     var self = this;
 
     var projectsData = [];
+    var tempData;
 
     if (!localStorage.projectsData) {
         var ajaxData = [];
@@ -152,6 +153,22 @@ function viewModel() {
             if(projectsData[i].userId == self.userId()) projectsDataThis.push(projectsData[i]);
         }
         console.log(projectsDataThis);
+    }
+
+    storeElement = function(data) {
+        tempData = data;
+    }
+
+    update = function(data){
+        console.log("In function update...");
+        console.log("Project: " + tempData);
+        console.log("Update: " + $("#updateText").val());
+        for(var i=0; i<projectsData.length; i++){
+            if(projectsData[i].id==tempData.id){
+                projectsData[i].latestUpdates.push($("#updateText").val());
+            }
+        }
+        localStorage.projectsData = JSON.stringify(projectsData);
     }
 
 }
