@@ -18,6 +18,8 @@ function loadData(){
 
     localStorage.setItem("projectsData", JSON.stringify(ajaxData));
 
+    ajaxData = [];
+
     $.ajax({
         dataType: "json",
         async : false,
@@ -32,5 +34,8 @@ function loadData(){
     })
 
     localStorage.setItem("loginData", JSON.stringify(ajaxData));
+
+    console.log(JSON.parse(localStorage.projectsData));
+    console.log(JSON.parse(localStorage.loginData));
     
 }
