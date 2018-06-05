@@ -114,7 +114,7 @@ function viewModel() {
         project.location = "Europe";
         project.raisedFunds = 1;
         project.userId = self.userId();
-        project.id = self.projectsData.length;
+        project.id = projectsData.length;
 
         console.log(project);
 
