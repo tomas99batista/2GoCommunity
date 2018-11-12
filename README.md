@@ -1,12 +1,3 @@
-Content Filter
-=========
+Project of Modelação e Análise de Sistemas | UA 2017-18
 
-A slide-in filter panel powered by CSS and jQuery.
-
-[Article on CodyHouse](http://codyhouse.co/gem/content-filter/)
-
-[Demo](http://codyhouse.co/demo/content-filter/index.html)
-
-Filter plugin: [MixItUp](https://github.com/patrickkunka/mixitup) (free to use in non-commercial projects)
- 
-[Terms](http://codyhouse.co/terms/)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/8f8f6e0688664bcb813230df4cf4218a)](https://www.codacy.com/app/tomas99batista/2GoCommunity?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tomas99batista/2GoCommunity&amp;utm_campaign=Badge_Grade)
